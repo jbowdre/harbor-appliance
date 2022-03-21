@@ -222,6 +222,6 @@ build {
   # }
 
   post-processor "shell-local" {
-    inline              = ["pwsh -F unregister_vm.ps1 ${var.builder_vcenter} ${var.builder_vcenter_username} ${var.builder_vcenter_password} ${var.vm_name}"]
+    inline                  = ["pwsh -F unregister_vm.ps1 ${var.builder_vcenter} ${var.builder_vcenter_username} ${var.builder_vcenter_password} ${var.vm_name}"]
   }
 }
