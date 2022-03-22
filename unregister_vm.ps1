@@ -14,5 +14,5 @@ Param(
 
 Connect-VIServer -Server "$VISERVER" -User "$VIUSERNAME" -Password "$VIPASSWORD"
 $vm = Get-VM "$VMNAME"
-$vm.ExtensionData.UnregisterVM()
+Remove-VM -VM $vm -DeletePermanently -Confirm:$false
 Disconnect-VIServer * -Confirm:$false
