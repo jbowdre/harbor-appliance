@@ -44,6 +44,7 @@ variable "guest_username" {
 }
 
 variable "guest_password" {
+  sensitive = true
   type      = string
   default   = "VMware1!"
 }
@@ -75,6 +76,7 @@ variable "builder_vcenter_username" {
 }
 
 variable "builder_vcenter_password" {
+  sensitive = true
   type      = string
   default   = "VMware1!"
 }
