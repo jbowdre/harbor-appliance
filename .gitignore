@@ -1,5 +1,5 @@
 packer_cache/
-output-vmware-iso/
+output-vsphere-iso/
 dist/
 .vscode
 .idea
