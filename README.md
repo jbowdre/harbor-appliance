@@ -13,6 +13,7 @@ Adapted from [William Lam's work](https://github.com/lamw/harbor-appliance) to:
 * vSphere Cluster running ESXi 6.5+ (DRS not required, single host will do)
 * [VMware OVFTool](https://developer.vmware.com/web/tool/4.4.0/ovf)
 * [Packer](https://www.packer.io/intro/getting-started/install.html)
+* [PowerCLI](https://developer.vmware.com/powercli/installation-guide) (for removing source VM after OVA export)
 * Packer account in vCenter with [appropriate permissions](https://www.packer.io/plugins/builders/vsphere/vsphere-iso#required-vsphere-privileges)
 
 
