@@ -43,7 +43,7 @@
             <Label>Harbor Password</Label>
             <Description>Password for Harbor 'admin' user. Change this upon first login!</Description>
         </Property>
-        <Category>zDebug</Category>
+        <Category>Debug</Category>
         <Property ovf:key="guestinfo.debug" ovf:type="boolean" ovf:userConfigurable="true" ovf:value="true">
             <Label>Debugging</Label>
             <Description>Enable Debugging</Description>
