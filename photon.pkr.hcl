@@ -5,7 +5,7 @@ packer {
 # vm vars
 variable "version" {
   type      = string
-  default   = "2.4.1"
+  default   = "2.4.2"
 }
 
 variable "description" {
@@ -116,7 +116,7 @@ source "vsphere-iso" "harbor" {
 
   # vm properties     
   vm_name                   = "${var.vm_name}"
-  notes                     = "Version: ${var.version}"
+  notes                     = "Harbor version: ${var.version}"
   vm_version                = "13"
   guest_os_type             = "vmwarePhoton64Guest"
   CPUs                      = "${var.numvcpus}"
