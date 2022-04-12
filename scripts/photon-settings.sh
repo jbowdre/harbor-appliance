@@ -25,7 +25,7 @@ echo '> Creating directory for setup scripts'
 mkdir -p /root/setup
 
 echo ' > Downloading Harbor...'
-HARBOR_VERSION=2.4.2
+HARBOR_VERSION=2.5.0
 curl -L https://github.com/goharbor/harbor/releases/download/v${HARBOR_VERSION}/harbor-offline-installer-v${HARBOR_VERSION}.tgz -o harbor-offline-installer-v${HARBOR_VERSION}.tgz
 tar xvzf harbor-offline-installer*.tgz
 rm -f harbor-offline-installer-v${HARBOR_VERSION}.tgz

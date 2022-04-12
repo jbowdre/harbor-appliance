@@ -5,7 +5,7 @@ packer {
 # vm vars
 variable "version" {
   type      = string
-  default   = "2.4.2"
+  default   = "2.5.0"
 }
 
 variable "description" {
