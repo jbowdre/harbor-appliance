@@ -37,11 +37,11 @@
         <Category>Credentials</Category>
         <Property ovf:key="guestinfo.root_password" ovf:password="true" ovf:type="string" ovf:userConfigurable="true" ovf:value="">
             <Label>Root Password</Label>
-            <Description>Password to login in as root. Please use a secure password.</Description>
+            <Description>Password to login in as root. This should be changed post-deployment as it will be passed (and logged) in plaintext.</Description>
         </Property>
         <Property ovf:key="guestinfo.harbor_password" ovf:password="true" ovf:type="string" ovf:userConfigurable="true" ovf:value="">
             <Label>Harbor Password</Label>
-            <Description>Password for Harbor 'admin' user. Change this upon first login!</Description>
+            <Description>Password for Harbor 'admin' user. This should be changed post-deployment as it will be passed (and logged) in plaintext.</Description>
         </Property>
         <Category>Debug</Category>
         <Property ovf:key="guestinfo.debug" ovf:type="boolean" ovf:userConfigurable="true" ovf:value="true">
