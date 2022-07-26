@@ -60,8 +60,8 @@ sed -i "s/private_key:.*/private_key: \/etc\/docker\/certs.d\/${HOSTNAME}\/${HOS
 sed -i "s/harbor_admin_password:.*/harbor_admin_password: ${HARBOR_PASSWORD}/g" ${HARBOR_CONFIG}
 sed -i "s/password:.*/password: ${HARBOR_PASSWORD}/g" ${HARBOR_CONFIG}
 
-# Installing Harbor
-./install.sh
+# Installing Harbor with Trivy scanner
+./install.sh --with-trivy
 rm -f harbor.*.gz
 
 # Waiting for Harbor to be ready, sleeping for 90 seconds
