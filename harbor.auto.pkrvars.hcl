@@ -51,7 +51,7 @@ iso_url                   = "https://packages.vmware.com/photon/4.0/Rev2/iso/pho
 ovf_export_enabled        = true
 ovf_export_overwrite      = true
 ovf_export_path           = "./output-vsphere-iso/"
-package_list              = [
+package_list = [
   "cloud-utils",
   "initramfs",
   "linux",
@@ -60,7 +60,7 @@ package_list              = [
   "parted",
   "sudo",
   "vim"
-                          ]
+]
 remove_cdrom              = true
 remove_keys               = true
 shutdown_command          = "/sbin/shutdown -h now"
@@ -74,4 +74,3 @@ vm_guest_os_type          = "vmwarePhoton64Guest"
 vm_mem_hotplug            = true
 vm_network_card           = "vmxnet3"
 vm_tools_upgrade_policy   = true
-
