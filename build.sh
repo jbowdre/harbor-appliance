@@ -1,7 +1,7 @@
 #!/bin/bash -x
 
 echo "Building Harbor OVA Appliance ..."
-rm -f output-vsphere-iso/*.ova
+rm -rf output-vsphere-iso/*
 
-echo "Applying packer build to photon.pkr.hcl ..."
-packer build -var-file="photon.pkrvars.hcl" photon.pkr.hcl
+echo "Applying packer build to harbor.pkr.hcl ..."
+packer build -on-error=abort -force .

@@ -1,21 +1,4 @@
 packer_cache/
 output-vsphere-iso/
-dist/
-.vscode
-.idea
-username
-password
-secret*.json
-secret*.yml
-.jekyll-metadata
-.sass-cache
-.jekyll-cache
-_site
-Gemfile.lock
-.tweet-cache
-*.coverprofile
-faas-cli*
-template
-# don't exclude this pkg by rule above
-!**/vendor/**/template
-checkpoints/
+env.auto.pkrvars.hcl
+

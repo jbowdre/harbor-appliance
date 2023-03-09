@@ -12,7 +12,7 @@ tdnf clean all
 
 # Cleanup log files
 echo '> Removing Log files...'
-cat /dev/null > /var/log/wtmp 2>/dev/null
+truncate -s 0 /var/log/wtmp
 logrotate -f /etc/logrotate.conf 2>/dev/null
 find /var/log -type f -delete
 rm -rf /var/log/journal/*

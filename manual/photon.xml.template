@@ -1,16 +1,16 @@
     <ProductSection ovf:required="true">
     <Info>Information about the installed software</Info>
-      <Product>VMware Harbor Appliance</Product>
-      <Vendor>WilliamLam.com</Vendor>
-      <Version>{{VERSION}}</Version>
-      <ProductUrl>https://github.com/lamw/harbor-appliance</ProductUrl>
-      <VendorUrl>https://williamlam.com/</VendorUrl>
+      <Product>{{APPLIANCE_PRODUCT}}</Product>
+      <Vendor>{{APPLIANCE_VENDOR}}</Vendor>
+      <Version>{{APPLIANCE_VERSION}}</Version>
+      <ProductUrl>{{APPLIANCE_PRODUCT_URL}}</ProductUrl>
+      <VendorUrl>{{APPLIANCE_VENDOR_URL}}</VendorUrl>
       <Category>Networking</Category>
-        <Property ovf:key="guestinfo.hostname" ovf:type="string" ovf:userConfigurable="true" ovf:value="harbor.lab.bowdre.net">
+        <Property ovf:key="guestinfo.hostname" ovf:type="string" ovf:userConfigurable="true" ovf:value="{{APPLIANCE_HOSTNAME}}">
             <Label>Hostname</Label>
             <Description>Hostname of system</Description>
         </Property>
-        <Property ovf:key="guestinfo.ipaddress" ovf:type="string" ovf:userConfigurable="true" ovf:value="192.168.1.17">
+        <Property ovf:key="guestinfo.ipaddress" ovf:type="string" ovf:userConfigurable="true" ovf:value="{{APPLIANCE_IP}}">
             <Label>IP Address</Label>
             <Description>IP Address of the system</Description>
         </Property>
@@ -18,35 +18,43 @@
             <Label>Network Prefix</Label>
             <Description>Network Prefix</Description>
         </Property>
-        <Property ovf:key="guestinfo.gateway" ovf:type="string" ovf:userConfigurable="true" ovf:value="192.168.1.1">
+        <Property ovf:key="guestinfo.gateway" ovf:type="string" ovf:userConfigurable="true" ovf:value="{{APPLIANCE_GATEWAY}}">
             <Label>Gateway</Label>
             <Description>Gateway of the system</Description>
         </Property>
-        <Property ovf:key="guestinfo.ntp" ovf:type="string" ovf:userConfigurable="true" ovf:value="pool.ntp.org">
+        <Property ovf:key="guestinfo.ntp" ovf:type="string" ovf:userConfigurable="true" ovf:value="{{APPLIANCE_NTP}}">
             <Label>NTP Server</Label>
             <Description>NTP Server</Description>
         </Property>
-        <Property ovf:key="guestinfo.dns" ovf:type="string" ovf:userConfigurable="true" ovf:value="192.168.1.5">
+        <Property ovf:key="guestinfo.dns" ovf:type="string" ovf:userConfigurable="true" ovf:value="{{APPLIANCE_DNS}}">
             <Label>DNS</Label>
             <Description>DNS Server</Description>
         </Property>
-        <Property ovf:key="guestinfo.domain" ovf:type="string" ovf:userConfigurable="true" ovf:value="lab.bowdre.net">
+        <Property ovf:key="guestinfo.domain" ovf:type="string" ovf:userConfigurable="true" ovf:value="{{APPLIANCE_DOMAIN}}">
             <Label>DNS Domain</Label>
             <Description>DNS Domain</Description>
         </Property>
-        <Category>Credentials</Category>
-        <Property ovf:key="guestinfo.root_password" ovf:password="true" ovf:type="string" ovf:userConfigurable="true" ovf:value="">
-            <Label>Root Password</Label>
-            <Description>Password to login in as root. This should be changed post-deployment as it will be passed (and logged) in plaintext.</Description>
+      <Category>Credentials</Category>
+        <Property ovf:key="guestinfo.admin_username" ovf:type="string" ovf:userConfigurable="true" ovf:value="{{APPLIANCE_ADMIN_USER}}">
+            <Label>Admin Username</Label>
+            <Description>Username for logging into the appliance (with sudo privileges).</Description>
+        </Property>
+        <Property ovf:key="guestinfo.admin_password" ovf:password="true" ovf:type="string" ovf:userConfigurable="true" ovf:value="">
+            <Label>Admin Password</Label>
+            <Description>Password for the appliance admin account.</Description>
+        </Property>
+        <Property ovf:key="guestinfo.admin_pubkey" ovf:type="string" ovf:userConfigurable="true" ovf:required="false">
+            <Label>Admin SSH Public Key</Label>
+            <Description>(Optional) SSH Public key for the appliance admin account.</Description>
         </Property>
         <Property ovf:key="guestinfo.harbor_password" ovf:password="true" ovf:type="string" ovf:userConfigurable="true" ovf:value="">
             <Label>Harbor Password</Label>
-            <Description>Password for Harbor 'admin' user. This should be changed post-deployment as it will be passed (and logged) in plaintext.</Description>
+            <Description>Password to login to Harbor as the 'admin' user.</Description>
         </Property>
-        <Category>Debug</Category>
-        <Property ovf:key="guestinfo.debug" ovf:type="boolean" ovf:userConfigurable="true" ovf:value="true">
+      <Category>Debug</Category>
+        <Property ovf:key="guestinfo.debug" ovf:type="boolean" ovf:userConfigurable="true" ovf:value="false">
             <Label>Debugging</Label>
-            <Description>Enable Debugging</Description>
+            <Description>Enable detailed debugging logs to /var/log/bootstrap.log.</Description>
         </Property>
         <Property ovf:key="guestinfo.docker_network_cidr" ovf:type="string" ovf:userConfigurable="true" ovf:value="172.17.0.1/16">
             <Label>Docker Bridge CIDR Network</Label>

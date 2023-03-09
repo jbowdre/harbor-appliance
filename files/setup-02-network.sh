@@ -6,8 +6,10 @@ set -euo pipefail
 
 echo -e "\e[92mConfiguring Static IP Address ..." > /dev/console
 
-NETWORK_CONFIG_FILE=$(ls /etc/systemd/network | grep .network)
-cat > /etc/systemd/network/${NETWORK_CONFIG_FILE} << __CUSTOMIZE_PHOTON__
+OLD_NETWORK_CONFIG_FILE=$(ls /etc/systemd/network/*.network)
+mv "$OLD_NETWORK_CONFIG_FILE"{,.bak}
+NEW_NETWORK_CONFIG_FILE="/etc/systemd/network/99-static.network"
+cat > "${NEW_NETWORK_CONFIG_FILE}" << __CUSTOMIZE_PHOTON__
 [Match]
 Name=e*
 
@@ -27,7 +29,6 @@ EOF
 
 echo -e "\e[92mConfiguring NTP ..." > /dev/console
 cat > /etc/systemd/timesyncd.conf << __CUSTOMIZE_PHOTON__
-
 [Match]
 Name=e*
 
@@ -37,7 +38,7 @@ __CUSTOMIZE_PHOTON__
 
 echo -e "\e[92mConfiguring hostname ..." > /dev/console
 echo "${IP_ADDRESS} ${HOSTNAME}" >> /etc/hosts
-hostnamectl set-hostname ${HOSTNAME}
+hostnamectl set-hostname "${HOSTNAME}"
 
 echo -e "\e[92mRestarting Network ..." > /dev/console
 systemctl restart systemd-networkd
