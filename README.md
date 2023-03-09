@@ -1,10 +1,11 @@
-# Reference for building VMware Harbor Virtual Appliance (OVA) using Packer
+# Harbor OVA built with Packer
 Adapted from [William Lam's work](https://github.com/lamw/harbor-appliance) to:
 - Translate from JSON to HCL format
 - Migrate from the [`vmware-iso` builder](https://www.packer.io/plugins/builders/vmware/iso) to the[`vsphere-iso` one](https://www.packer.io/plugins/builders/vsphere/vsphere-iso) which
   - Leverages an API connection to vCenter instead of SSH connection to the host
   - Eliminates the need for the `/Net/GuestIPHack` advanced configuration for ESXi
   - Supports connecting the template VM to a dvPortGroup
+- Incorporate a lot of additional parameterization
 
 ## Requirements
 
@@ -15,9 +16,6 @@ Adapted from [William Lam's work](https://github.com/lamw/harbor-appliance) to:
 * [Packer](https://www.packer.io/intro/getting-started/install.html)
 * [PowerCLI](https://developer.vmware.com/powercli/installation-guide) (for removing source VM after OVA export)
 * Packer account in vCenter with [appropriate permissions](https://www.packer.io/plugins/builders/vsphere/vsphere-iso#required-vsphere-privileges)
-
-
-> `packer` builds the OVA on a remote ESXi host via the [`vsphere-iso`](https://www.packer.io/plugins/builders/vsphere/vsphere-iso) builder.
 
 ## Procedure
 Step 1 - Clone the git repository
