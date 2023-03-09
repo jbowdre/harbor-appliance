@@ -1,16 +1,7 @@
-# Guest Partitioning
-guest_part_boot           = 128
-guest_part_docker         = 81920
-guest_part_log            = 512
-guest_part_root           = 0
-guest_part_swap           = 512
-guest_part_tmp            = 512
-guest_part_var            = 512
-
 # Harbor
-harbor_version            = "2.7.1"
 harbor_compose_version    = "2.16.0"
 harbor_ovf_template       = "photon.xml.template"
+harbor_version            = "2.7.1"
 
 # Appliance Config
 appliance_def_admin_user  = "admin"
@@ -20,10 +11,19 @@ appliance_def_gateway     = "192.168.1.1"
 appliance_def_hostname    = "harbor.example.com"
 appliance_def_ip          = "192.168.1.10"
 appliance_def_ntp         = "pool.ntp.org"
-appliance_product         = "VMware Harbor Appliance"
+appliance_product         = "Harbor Appliance"
 appliance_product_url     = "https://github.com/jbowdre/harbor-appliance"
 appliance_vendor          = "VirtuallyPotato"
 appliance_vendor_url      = "https://virtuallypotato.com"
+
+# Guest Partitioning (in MB)
+guest_part_boot           = 128
+guest_part_docker         = 81920
+guest_part_log            = 512
+guest_part_root           = 0
+guest_part_swap           = 512
+guest_part_tmp            = 512
+guest_part_var            = 512
 
 # VM Config
 vm_cpu_count              = 2
