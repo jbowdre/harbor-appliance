@@ -181,6 +181,6 @@ build {
   }
 
   post-processor "shell-local" {
-    inline                            = ["pwsh -F unregister_vm.ps1 ${var.vsphere_endpoint} ${var.vsphere_username} ${var.vsphere_password} ${var.vm_name}"]
+    inline                            = ["pwsh -F unregister_vm.ps1 '${var.vsphere_endpoint}' '${var.vsphere_username}' '${var.vsphere_password}' '${var.vm_name}'"]
   }
 }
