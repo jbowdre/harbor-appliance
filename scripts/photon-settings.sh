@@ -4,9 +4,6 @@
 ## Misc configuration
 ##
 
-echo '> Disable IPv6'
-echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
-
 echo '> Applying latest Updates...'
 sed -i 's/dl.bintray.com\/vmware/packages.vmware.com\/photon\/$releasever/g' /etc/yum.repos.d/*.repo
 tdnf -y update photon-repos

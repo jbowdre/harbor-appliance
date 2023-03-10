@@ -18,6 +18,7 @@ Address=${IP_ADDRESS}/${NETMASK}
 Gateway=${GATEWAY}
 DNS=${DNS_SERVER}
 Domain=${DNS_DOMAIN}
+LinkLocalAddressing=no
 __CUSTOMIZE_PHOTON__
 
 # Remove default symlink to prevent reverting back to local DNS stub resolver
