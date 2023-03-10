@@ -24,11 +24,11 @@
         </Property>
         <Property ovf:key="guestinfo.ntp" ovf:type="string" ovf:userConfigurable="true" ovf:value="{{APPLIANCE_NTP}}">
             <Label>NTP Server</Label>
-            <Description>NTP Server</Description>
+            <Description>Use spaces to separate multiple IP addresses.</Description>
         </Property>
         <Property ovf:key="guestinfo.dns" ovf:type="string" ovf:userConfigurable="true" ovf:value="{{APPLIANCE_DNS}}">
             <Label>DNS</Label>
-            <Description>DNS Server</Description>
+            <Description>Use spaces to separate multiple IP addresses.</Description>
         </Property>
         <Property ovf:key="guestinfo.domain" ovf:type="string" ovf:userConfigurable="true" ovf:value="{{APPLIANCE_DOMAIN}}">
             <Label>DNS Domain</Label>
