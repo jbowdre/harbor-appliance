@@ -1,25 +1,26 @@
 #!/bin/bash
 
 # Generate a CA certificate private key
-openssl genrsa -out ca.key 4096
+mkdir -p /opt/harbor/certs/
+openssl genrsa -out /opt/harbor/certs/ca.key 4096
 
 # Generate the CA certificate
 openssl req -x509 -new -nodes -sha512 -days 3650 \
   -subj "/C=US/ST=California/L=Palo Alto/CN=${HOSTNAME}" \
-  -key ca.key \
-  -out ca.crt
+  -key /opt/harbor/certs/ca.key \
+  -out /opt/harbor/certs/ca.crt
 
 # Generate a private key
-openssl genrsa -out "${HOSTNAME}.key" 4096
+openssl genrsa -out "/opt/harbor/certs/${HOSTNAME}.key" 4096
 
 # Generate a certificate signing request (CSR)
 openssl req -sha512 -new \
   -subj "/C=US/ST=California/L=Palo Alto/CN=${HOSTNAME}" \
-  -key "${HOSTNAME}.key" \
-  -out "${HOSTNAME}.csr"
+  -key "/opt/harbor/certs/${HOSTNAME}.key" \
+  -out "/opt/harbor/certs/${HOSTNAME}.csr"
 
 # Generate an x509 v3 extension file
-cat > v3.ext <<-EOF
+cat > /opt/harbor/certs/v3.ext <<-EOF
 authorityKeyIdentifier=keyid,issuer
 basicConstraints=CA:FALSE
 keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
@@ -33,22 +34,22 @@ EOF
 
 # Generate a certificate for your Harbor host using v3.ext
 openssl x509 -req -sha512 -days 3650 \
-  -extfile v3.ext \
-  -CA ca.crt -CAkey ca.key -CAcreateserial \
-  -in "${HOSTNAME}.csr" \
-  -out "${HOSTNAME}.crt"
+  -extfile /opt/harbor/certs/v3.ext \
+  -CA /opt/harbor/certs/ca.crt -CAkey /opt/harbor/certs/ca.key -CAcreateserial \
+  -in "/opt/harbor/certs/${HOSTNAME}.csr" \
+  -out "/opt/harbor/certs/${HOSTNAME}.crt"
 
 # Configure certificate for Docker
 mkdir -p /data/cert/
-cp "${HOSTNAME}.crt" /data/cert/
-cp "${HOSTNAME}.key" /data/cert/
+cp "/opt/harbor/certs/${HOSTNAME}.crt" /data/cert/
+cp "/opt/harbor/certs/${HOSTNAME}.key" /data/cert/
 
-openssl x509 -inform PEM -in "${HOSTNAME}.crt" -out "${HOSTNAME}.cert"
+openssl x509 -inform PEM -in "/opt/harbor/certs/${HOSTNAME}.crt" -out "/opt/harbor/certs/${HOSTNAME}.cert"
 
 mkdir -p "/etc/docker/certs.d/${HOSTNAME}/"
-cp "${HOSTNAME}.cert" "/etc/docker/certs.d/${HOSTNAME}/"
-cp "${HOSTNAME}.key" "/etc/docker/certs.d/${HOSTNAME}/"
-cp ca.crt "/etc/docker/certs.d/${HOSTNAME}/"
+cp "/opt/harbor/certs/${HOSTNAME}.cert" "/etc/docker/certs.d/${HOSTNAME}/"
+cp "/opt/harbor/certs/${HOSTNAME}.key" "/etc/docker/certs.d/${HOSTNAME}/"
+cp /opt/harbor/certs/ca.crt "/etc/docker/certs.d/${HOSTNAME}/"
 
 # Creating Harbor configuration
 HARBOR_CONFIG=harbor.yml
@@ -68,7 +69,6 @@ rm -f harbor.*.gz
 sleep 90
 
 #Enable Harbor as a Systemd Service
-
 cat > /etc/systemd/system/harbor.service << __HARBOR_SYSTEMD__
 [Unit]
 Description=Harbor Service
