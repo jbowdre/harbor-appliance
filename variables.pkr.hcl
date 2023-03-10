@@ -77,43 +77,44 @@ variable "cd_label" {
 
 variable "guest_root_password" {
   type          = string
-  description   = "Initial root password used during installation."
+  description   = "Initial root password used during installation (gets reset to a random one afterward, and a new admin password will be defined when deploying from the OVA)."
   sensitive     = true
 }
 
 variable "guest_part_boot" {
   type          = number
-  description   = "Size of the /boot partition in MB. Set to 0 to consume all remaining free space."
+  description   = "Size of the /boot partition in MB."
 }
 
 variable "guest_part_docker" {
   type          = number
-  description   = "Size of the /var/lib/docker partition in MB. Set to 0 to consume all remaining free space."
+  description   = "Size of the /var/lib/docker partition in MB."
 }
 
 variable "guest_part_log" {
   type          = number
-  description   = "Size of the /var/log partition in MB. Set to 0 to consume all remaining free space."
+  description   = "Size of the /var/log partition in MB."
 }
 
 variable "guest_part_root" {
   type          = number
   description   = "Size of the / partition in MB. Set to 0 to consume all remaining free space."
+  default       = 0
 }
 
 variable "guest_part_swap" {
   type          = number
-  description   = "Size of the swap partition in MB. Set to 0 to consume all remaining free space."
+  description   = "Size of the swap partition in MB."
 }
 
 variable "guest_part_tmp" {
   type          = number
-  description   = "Size of the /tmp partition in MB. Set to 0 to consume all remaining free space."
+  description   = "Size of the /tmp partition in MB."
 }
 
 variable "guest_part_var" {
   type          = number
-  description   = "Size of the /var partition in MB. Set to 0 to consume all remaining free space."
+  description   = "Size of the /var partition in MB."
 }
 
 variable "harbor_compose_version" {
@@ -283,7 +284,7 @@ variable "vsphere_datastore" {
 
 variable "vsphere_endpoint" {
   type          = string
-  description   = "FQDN/IP of the vCenter or host to deploy to."
+  description   = "FQDN/IP of the vCenter to deploy to."
 }
 
 variable "vsphere_folder" {
