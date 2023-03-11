@@ -40,9 +40,6 @@ vsphere_insecure_connection   = true
 vsphere_network               = "Network-1"
 vsphere_password              = "hunter2"
 vsphere_username              = "packer"
-
-# Guest Credentials
-guest_root_password           = "hunter2"
 ```
 
 Step 3 - Review [`harbor.auto.pkrvars.hcl`](harbor.auto.pkrvars.hcl) and change any other options you think might be fun - in particular, the `Appliance Config` session defines the properties and default values that will be shown when deploying the OVA:
