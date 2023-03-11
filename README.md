@@ -1,11 +1,15 @@
 # Harbor OVA built with Packer
-Adapted from [William Lam's work](https://github.com/lamw/harbor-appliance) to:
+
+What is [Harbor](https://goharbor.io/)?
+> Harbor is an open source registry that secures artifacts with policies and role-based access control, ensures images are scanned and free from vulnerabilities, and signs images as trusted. Harbor, a CNCF Graduated project, delivers compliance, performance, and interoperability to help you consistently and securely manage artifacts across cloud native compute platforms like Kubernetes and Docker.
+
+This project is adapted from [William Lam's work](https://github.com/lamw/harbor-appliance) to:
 - Translate from JSON to HCL format
 - Migrate from the [`vmware-iso` builder](https://www.packer.io/plugins/builders/vmware/iso) to the[`vsphere-iso` one](https://www.packer.io/plugins/builders/vsphere/vsphere-iso) which
   - Leverages an API connection to vCenter instead of SSH connection to the host
   - Eliminates the need for the `/Net/GuestIPHack` advanced configuration for ESXi
   - Supports connecting the template VM to a dvPortGroup
-- Incorporate a lot of additional parameterization
+- Incorporate a *lot* of additional parameterization (and a bit of hardening) to help make the resulting OVA more ready for use in production environments
 
 ## Requirements
 
