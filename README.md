@@ -41,7 +41,26 @@ vsphere_username              = "packer"
 guest_root_password           = "hunter2"
 ```
 
-Step 3 - Review `harbor.auto.pkrvars.hcl` and change any other options you think might be fun.
+Step 3 - Review `harbor.auto.pkrvars.hcl` and change any other options you think might be fun - in particular, the `Appliance Config` session defines the properties and default values that will be shown when deploying the OVA:
+```
+# Harbor
+harbor_compose_version    = "2.16.0"
+harbor_ovf_template       = "photon.xml.template"
+harbor_version            = "2.7.1"
+
+# Appliance Config
+appliance_def_admin_user  = "admin"
+appliance_def_dns         = "192.168.1.5"
+appliance_def_domain      = "example.com"
+appliance_def_gateway     = "192.168.1.1"
+appliance_def_hostname    = "harbor.example.com"
+appliance_def_ip          = "192.168.1.10"
+appliance_def_ntp         = "pool.ntp.org"
+appliance_product         = "Harbor Appliance"
+appliance_product_url     = "https://github.com/jbowdre/harbor-appliance"
+appliance_vendor          = "VirtuallyPotato"
+appliance_vendor_url      = "https://virtuallypotato.com"
+```
 
 Step 4 - Start the build by running the build script which simply calls Packer and the respective build files
 ```
@@ -50,6 +69,10 @@ Step 4 - Start the build by running the build script which simply calls Packer a
 
 If the build was successful, you will find the Harbor OVA located in `output-vsphere-iso/HarborAppliance.ova`
 
-You can then [deploy the OVA to vSphere](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-17BEDA21-43F6-41F4-8FB2-E01D275FE9B4.html) like usual. You'll be prompted to set up the initial settings during the template deployment. Once the VM boots up, follow the [What to Do Next](https://goharbor.io/docs/2.7.0/install-config/run-installer-script/#what-to-do-next) instructions to get up and running.
+You can then [deploy the OVA to vSphere](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-17BEDA21-43F6-41F4-8FB2-E01D275FE9B4.html) like usual. You'll be prompted to set up the initial settings during the template deployment.
+
+![OVA Deployment](res/ova_deployment.png)
+
+Once the VM boots up, follow the [What to Do Next](https://goharbor.io/docs/2.7.0/install-config/run-installer-script/#what-to-do-next) instructions to get up and running.
 
 Harbor will be installed in `/opt/harbor/` on the appliance in case you need to [reconfigure anything there](https://goharbor.io/docs/2.7.0/install-config/reconfigure-manage-lifecycle/).
