@@ -27,7 +27,7 @@ Step 1 - Clone the git repository
 git clone https://github.com/jbowdre/harbor-appliance.git
 ```
 
-Step 2 - Copy `env-example.pkrvars.hcl` to `env.auto.pkrvars.hcl` and update accordingly:
+Step 2 - Copy [`env-example.pkrvars.hcl`](env-example.pkrvars.hcl) to `env.auto.pkrvars.hcl` and update accordingly:
 ```
 # vSphere Environment
 vsphere_cluster               = "Cluster-1"
@@ -45,7 +45,7 @@ vsphere_username              = "packer"
 guest_root_password           = "hunter2"
 ```
 
-Step 3 - Review `harbor.auto.pkrvars.hcl` and change any other options you think might be fun - in particular, the `Appliance Config` session defines the properties and default values that will be shown when deploying the OVA:
+Step 3 - Review [`harbor.auto.pkrvars.hcl`](harbor.auto.pkrvars.hcl) and change any other options you think might be fun - in particular, the `Appliance Config` session defines the properties and default values that will be shown when deploying the OVA:
 ```
 # Harbor
 harbor_compose_version    = "2.16.0"
@@ -64,6 +64,7 @@ appliance_product         = "Harbor Appliance"
 appliance_product_url     = "https://github.com/jbowdre/harbor-appliance"
 appliance_vendor          = "VirtuallyPotato"
 appliance_vendor_url      = "https://virtuallypotato.com"
+[...]
 ```
 
 Step 4 - Start the build by running the build script which simply calls Packer and the respective build files
