@@ -75,12 +75,6 @@ variable "cd_label" {
   description   = "Media label for the optical drive."
 }
 
-variable "guest_root_password" {
-  type          = string
-  description   = "Initial root password used during installation (gets reset to a random one afterward, and a new admin password will be defined when deploying from the OVA)."
-  sensitive     = true
-}
-
 variable "guest_part_boot" {
   type          = number
   description   = "Size of the /boot partition in MB."

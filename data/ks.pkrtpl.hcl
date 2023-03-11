@@ -1,9 +1,5 @@
 {
   "hostname": "${ guest_hostname }",
-  "password": {
-    "crypted": false,
-    "text": "${ guest_root_password }"
-  },
   "disk": "/dev/sda",
   "partitions": [
     {
@@ -69,7 +65,6 @@
   ],
   "postinstall": [
     "#!/bin/sh",
-    "chage -I -1 -m 0 -M 99999 -E -1 root",
     "mkdir -p /root/.ssh",
     "echo \"${ guest_root_ssh_key }\" >> /root/.ssh/authorized_keys",
     "sed -i 's/.*PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config",

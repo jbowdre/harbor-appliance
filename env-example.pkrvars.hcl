@@ -12,6 +12,3 @@ vsphere_insecure_connection   = true                      # True to disable cert
 vsphere_network               = "Network-1"               # Name of the virtual portgroup to deploy to.
 vsphere_password              = "hunter2"                 # Password to authenticate with the vSphere endpoint.
 vsphere_username              = "packer"                  # Username to authenticate with the vSphere endpoint.
-
-# Guest Credentials
-guest_root_password           = "hunter2"                 # Initial root password used during installation (gets reset to a random one afterward, and a new admin password will be defined when deploying from the OVA)

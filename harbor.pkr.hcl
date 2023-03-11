@@ -35,7 +35,6 @@ locals {
       guest_part_swap                 = var.guest_part_swap
       guest_part_tmp                  = var.guest_part_tmp
       guest_part_var                  = var.guest_part_var
-      guest_root_password             = var.guest_root_password
       package_list                    = var.package_list
     })
   }
